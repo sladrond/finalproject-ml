@@ -1,0 +1,72 @@
+
+Data shape:
+
+Training data:  (60000, 28, 28, 1)
+
+Training label: (60000,)
+
+Testing data:   (10000, 28, 28, 1)
+
+Testing label:  (10000,)
+
+
+2020-12-05 14:08:49.142279: I tensorflow/core/platform/cpu_feature_guard.cc:143] Your CPU supports instructions that this TensorFlow binary was not compiled to use: SSE4.1 SSE4.2 AVX AVX2 FMA
+2020-12-05 14:08:49.149516: I tensorflow/core/platform/profile_utils/cpu_utils.cc:102] CPU Frequency: 2399980000 Hz
+2020-12-05 14:08:49.149693: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x55aaa9a4c3c0 initialized for platform Host (this does not guarantee that XLA will be used). Devices:
+2020-12-05 14:08:49.149724: I tensorflow/compiler/xla/service/service.cc:176]   StreamExecutor device (0): Host, Default Version
+2020-12-05 14:08:49.149839: I tensorflow/core/common_runtime/process_util.cc:147] Creating new thread pool with default inter op setting: 2. Tune using inter_op_parallelism_threads for best performance.
+
+The hyperparameter search is complete. The optimal hyperparameters are:
+
+num of conv layers:  2;
+
+kernel size:         3;
+
+filter number 1:     32;
+
+filter number 2:     32;
+
+dense layer units:   512;
+
+dropout rate:        0.5.
+
+
+Epoch 1/20
+1875/1875 - 56s - loss: 0.4645 - accuracy: 0.8307 - val_loss: 0.3556 - val_accuracy: 0.8690
+Epoch 2/20
+1875/1875 - 56s - loss: 0.3286 - accuracy: 0.8794 - val_loss: 0.3093 - val_accuracy: 0.8860
+Epoch 3/20
+1875/1875 - 56s - loss: 0.2860 - accuracy: 0.8939 - val_loss: 0.2729 - val_accuracy: 0.8988
+Epoch 4/20
+1875/1875 - 55s - loss: 0.2581 - accuracy: 0.9037 - val_loss: 0.2675 - val_accuracy: 0.9025
+Epoch 5/20
+1875/1875 - 55s - loss: 0.2404 - accuracy: 0.9100 - val_loss: 0.2555 - val_accuracy: 0.9078
+Epoch 6/20
+1875/1875 - 55s - loss: 0.2232 - accuracy: 0.9158 - val_loss: 0.2546 - val_accuracy: 0.9102
+Epoch 7/20
+1875/1875 - 55s - loss: 0.2098 - accuracy: 0.9214 - val_loss: 0.2419 - val_accuracy: 0.9138
+Epoch 8/20
+1875/1875 - 55s - loss: 0.1976 - accuracy: 0.9252 - val_loss: 0.2545 - val_accuracy: 0.9120
+Epoch 9/20
+1875/1875 - 55s - loss: 0.1871 - accuracy: 0.9287 - val_loss: 0.2838 - val_accuracy: 0.9058
+Epoch 10/20
+1875/1875 - 55s - loss: 0.1748 - accuracy: 0.9333 - val_loss: 0.2564 - val_accuracy: 0.9153
+Epoch 11/20
+1875/1875 - 55s - loss: 0.1682 - accuracy: 0.9376 - val_loss: 0.2519 - val_accuracy: 0.9168
+Epoch 12/20
+1875/1875 - 55s - loss: 0.1609 - accuracy: 0.9400 - val_loss: 0.2533 - val_accuracy: 0.9163
+           T-shirt/top   Trouser  Pullover     Dress      Coat
+AUC score      0.99224  0.999576  0.990346  0.996931  0.991179
+             Sandal     Shirt   Sneaker       Bag  Ankle boot
+AUC score  0.999801  0.976114  0.999145  0.999645    0.999346
+Confusion matrix:
+[[850   0  25  21   4   0  92   0   8   0]
+ [  1 982   0  14   2   0   1   0   0   0]
+ [ 13   1 858   9  66   0  53   0   0   0]
+ [  8   3  10 955  10   0  14   0   0   0]
+ [  0   1  53  43 859   0  43   0   1   0]
+ [  0   0   0   0   0 991   0   6   2   1]
+ [ 95   0  60  38  74   0 728   0   5   0]
+ [  0   0   0   0   0  14   0 952   3  31]
+ [  4   1   0   3   3   1   0   0 988   0]
+ [  1   0   0   0   0   3   0  21   0 975]]
