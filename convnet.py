@@ -5,6 +5,7 @@ from __future__ import print_function
 import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
+import pandas as pd
 from tensorflow import keras as K
 from sklearn.utils import shuffle
 from sklearn.metrics import roc_auc_score, confusion_matrix
@@ -129,7 +130,7 @@ dropout rate:        {best_hps.get('dropout')}.\n
 ### FIT ALL TRAINING DATA WITH OPTIMAL HYPERPARAMETERS ###
 
 model = tuner.hypermodel.build(best_hps)
-history = model.fit(x_train, y_train, epochs = 20, verbose=0,
+history = model.fit(x_train, y_train, epochs = 20, verbose=2,
                     validation_data = (x_test, y_test),
                     callbacks=[K.callbacks.EarlyStopping(
                         patience=5, restore_best_weights=True)])
@@ -158,7 +159,10 @@ pred = model.predict(x_test)
 
 # AUC by class
 y_test_class = K.utils.to_categorical(y_test, n_classes)
-roc_auc_score(y_test_class, pred, average=None)
+AUC = pd.DataFrame(roc_auc_score(y_test_class, pred, average=None)[np.newaxis,:],
+                   columns=labels, index=['AUC score'])
+print(AUC[labels[:5]])
+print(AUC[labels[5:]])
 
 # confusion matrix
 pred_label = pred.argmax(axis=1)
