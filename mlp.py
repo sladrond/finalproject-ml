@@ -30,9 +30,7 @@ def get_normalized_data():
 
 def get_best_model(x_train, y_train, x_valid, y_valid):
     act = [ 'relu','tanh', 'sigmoid']
-    #act = [ 'relu']
     alpha = np.linspace(0.0001, 0.01, 10)
-    #optimizers=['adam']
     optimizers = ['adam', 'sgd']
 
     
@@ -66,10 +64,12 @@ def get_model(activation, final_activation, optimizer, lrate):
     # Model
     model = Sequential()
     model.add(Flatten(input_shape=(28,28)))
-    model.add(Dense(256, activation=activation ,input_shape=(28*28,)))
-    model.add(Dropout(0.01))
-    model.add(Dense(128, activation=activation))
-    model.add(Dense(100, activation=activation))
+    model.add(Dense(392, activation=activation ,input_shape=(28*28,)))
+    model.add(Dropout(0.1))
+    model.add(Dense(196, activation=activation))
+    model.add(Dropout(0.1))
+    model.add(Dense(98, activation=activation))
+    model.add(Dropout(0.1))
     model.add(Dense(10, activation=final_activation))
     if optimizer == 'sgd':  
         optim = keras.optimizers.SGD(lr=lrate,decay=1e-06)
